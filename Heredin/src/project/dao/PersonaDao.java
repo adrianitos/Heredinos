@@ -18,19 +18,23 @@ public class PersonaDao implements IPersonaDao {
 	@Override
 	public void RegistrarPersona(PersonaVO persona) {
 		
+		//crear connexio
 		DbConnection conex= new DbConnection();
 		  try {
+			  //Preparar connexio
 		   Statement estatuto = conex.getConnection().createStatement();
-		   estatuto.executeUpdate("INSERT INTO Persona VALUES ('"+persona.+"', '"
-		     +persona.getNombrePersona()+"', '"+persona.getEdadPersona()+"', '"
-		     +persona.getProfesionPersona()+"', '"+persona.getTelefonoPersona()+"')");
-		   JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE);
+		   
+		   //executar consulta
+		   estatuto.executeUpdate("INSERT INTO Persona VALUES ('"+persona.getId()+"', '"
+		     +persona.getNomUser()+"', '"+persona.getNomComplert()+"', '"
+		     +persona.getAdresa()+"', '"+persona.getNumTelf()+"')");
+		   System.out.println("T'has registrat correctament");
 		   estatuto.close();
 		   conex.desconectar();
 		    
 		  } catch (SQLException e) {
 		            System.out.println(e.getMessage());
-		   JOptionPane.showMessageDialog(null, "No se Registro la persona");
+		            System.out.println("Connexio incorrecta");
 		  }
 		
 		
@@ -52,8 +56,31 @@ public class PersonaDao implements IPersonaDao {
 
 	@Override
 	public ArrayList<PersonaVO> Llistar() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ArrayList< PersonaVO> miEmpleado = new ArrayList< PersonaVO>();
+		  DbConnection conex= new DbConnection();
+		     
+		  try {
+		   PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM persona");
+		   ResultSet res = consulta.executeQuery();
+		   while(res.next()){
+		    PersonaVO persona= new PersonaVO(res.getInt(0)));
+		    
+		    persona.setIdPersona(Integer.parseInt(res.getString("id")));
+		    persona.setNombrePersona(res.getString("nombre"));
+		    persona.setEdadPersona(Integer.parseInt(res.getString("edad")));
+		    persona.setProfesionPersona(res.getString("profesion"));
+		    persona.setTelefonoPersona(Integer.parseInt(res.getString("telefono")));
+		    miEmpleado.add(persona);
+		          }
+		          res.close();
+		          consulta.close();
+		          conex.desconectar();
+		    
+		  } catch (Exception e) {
+		   JOptionPane.showMessageDialog(null, "no se pudo consultar la Persona\n"+e);
+		  }
+		  return miEmpleado;
 	}
 
 	@Override
@@ -70,7 +97,26 @@ public class PersonaDao implements IPersonaDao {
 
 	@Override
 	public void AfegirCartera(CarteraVO cartera) {
-		// TODO Auto-generated method stub
+		
+		//crear connexio
+				DbConnection conex= new DbConnection();
+				  try {
+					  //Preparar connexio
+				   Statement estatuto = conex.getConnection().createStatement();
+				   
+				   //executar consulta
+				   estatuto.executeUpdate("INSERT INTO Cartera VALUES ('"+cartera.getId()+"', '"
+				     +cartera.getAdrPubl()+"', '"+cartera.getAdrPriv()+"', '"+cartera.getSaldo()+"')");
+				   System.out.println("Cartera introduida correctament");
+				   estatuto.close();
+				   conex.desconectar();
+				    
+				  } catch (SQLException e) {
+				            System.out.println(e.getMessage());
+				            System.out.println("No s'ha pogut inserir correctament");
+				  }
+				
+				
 		
 	}
 
