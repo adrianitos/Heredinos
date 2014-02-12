@@ -10,6 +10,11 @@ public class CarteraVO {
 	private String adrPubl;
 	private String adrPriv;
 	private int saldo;
+	
+	
+	public CarteraVO() {
+		super();
+	}
 	/**
 	 * @param id
 	 * @param adrPubl
