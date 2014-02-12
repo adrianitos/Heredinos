@@ -1,18 +1,12 @@
 package project.dao;
 
 import java.util.ArrayList;
-
 import project.vo.CarteraVO;
 import project.vo.PersonaVO;
-import project.*;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import javax.swing.JOptionPane;
-
 import project.connection.DbConnection;
 import project.factory.HeredinFactory;
 
@@ -45,7 +39,7 @@ public class PersonaDao implements IPersonaDao {
 		
 	}
 
-	@Override
+	
 	public PersonaVO CrearPersona(int id, String nomUsuari, String nom, int telefon) {
 		
 		
@@ -137,7 +131,7 @@ public class PersonaDao implements IPersonaDao {
 		    
 		  } catch (Exception e) {
 			  
-		   JOptionPane.showMessageDialog(null, "Impossible llistar les persones\n"+e);
+		   System.out.print("No s'ha pogut fer el llistat");;
 		  }
 		  
 		  return persones;
@@ -152,7 +146,28 @@ public class PersonaDao implements IPersonaDao {
 	@Override
 	public void EliminarPersona(PersonaVO persona) {
 		
-		
+		try {
+			DbConnection conex= new DbConnection();
+			
+		   PreparedStatement consulta = conex.getConnection().prepareStatement("delete FROM persona where nomUser='" + persona.getNomUser() + "'");
+		   
+		   ResultSet res = consulta.executeQuery();
+		   
+	
+		    res.close();
+		          
+		    consulta.close();
+		          
+		    conex.desconectar();
+		    
+		    System.out.print("Operacio d'eliminar realitzada correctament");
+		  
+		  } catch (Exception e) {
+			  
+		   System.out.print("Operacio d'eliminar no realitzada");
+		  }
+	
+	
 	}
 
 	@Override
