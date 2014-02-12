@@ -8,10 +8,10 @@ import java.sql.*;
  */
 public class DbConnection {
    /**Parametros de conexion*/
-   static String bd = "dao";
+   static String bd = "kriptsof_heredin";
    static String login = "root";
    static String password = "admin";
-   static String url = "jdbc:mysql://localhost/"+bd;
+   static String url = "jdbc:mysql:gator3116.hostgator.com:2083/"+bd;
  
    Connection connection = null;
  
