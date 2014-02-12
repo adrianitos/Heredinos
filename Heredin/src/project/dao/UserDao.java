@@ -26,9 +26,8 @@ public class UserDao implements IUserDao {
 		DbConnection conex= new DbConnection();
 		  try {
 		   Statement estatuto = conex.getConnection().createStatement();
-		   estatuto.executeUpdate("INSERT INTO persona VALUES ('"+user.getIdPersona()+"', '"
-		     +persona.getNombrePersona()+"', '"+persona.getEdadPersona()+"', '"
-		     +persona.getProfesionPersona()+"', '"+persona.getTelefonoPersona()+"')");
+		   estatuto.executeUpdate("INSERT INTO user VALUES ('"+user.getNomUser()+"', '"
+		     +user.getPassword()+"')");
 		   JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE);
 		   estatuto.close();
 		   conex.desconectar();
