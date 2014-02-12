@@ -75,7 +75,7 @@ public class PersonaDao implements IPersonaDao {
 			   
 			   ResultSet res = consulta.executeQuery();
 			   
-			   PersonaVO persona=(PersonaVO) HeredinFactory.getObject("persona");
+			   		PersonaVO persona=(PersonaVO) HeredinFactory.getObject("persona");
 			   
 				    persona.setId((Integer.parseInt(res.getString("id"))));
 				    
@@ -92,15 +92,15 @@ public class PersonaDao implements IPersonaDao {
 			          
 			          conex.desconectar();
 			          
+			          return persona;
 			  
-			    
 			  } catch (Exception e) {
 				  
 			   System.out.print("La persona no existeix");
 			  }
 		
-		return persona;
 		
+		return null;
 	}
 
 	@Override
