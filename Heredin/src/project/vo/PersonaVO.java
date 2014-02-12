@@ -7,6 +7,7 @@ public class PersonaVO {
 	private String nomComplert;
 	private String adresa;
 	private int numTelf;
+	private String email;
 	
 	
 	public PersonaVO() {
@@ -18,15 +19,17 @@ public class PersonaVO {
 	 * @param nomComplert
 	 * @param adresa
 	 * @param numTelf
+	 * @param email 
 	 */
 	public PersonaVO(int id, String nomUser, String nomComplert, String adresa,
-			int numTelf) {
+			int numTelf, String email) {
 		super();
 		this.id = id;
 		this.nomUser = nomUser;
 		this.nomComplert = nomComplert;
 		this.adresa = adresa;
 		this.numTelf = numTelf;
+		this.email=email;
 	}
 	/**
 	 * @return the id
@@ -87,6 +90,18 @@ public class PersonaVO {
 	 */
 	public void setNumTelf(int numTelf) {
 		this.numTelf = numTelf;
+	}
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
