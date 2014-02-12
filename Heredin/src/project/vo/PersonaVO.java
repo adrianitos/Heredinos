@@ -8,6 +8,10 @@ public class PersonaVO {
 	private String adresa;
 	private int numTelf;
 	
+	
+	public PersonaVO() {
+		super();
+	}
 	/**
 	 * @param id
 	 * @param nomUser
