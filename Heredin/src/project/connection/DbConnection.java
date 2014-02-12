@@ -9,9 +9,9 @@ import java.sql.*;
 public class DbConnection {
    /**Parametros de conexion*/
    static String bd = "kriptsof_heredin";
-   static String login = "root";
+   static String login = "kriptsof_admin1";
    static String password = "admin";
-   static String url = "jdbc:mysql:gator3116.hostgator.com:2083/"+bd;
+   static String url = "jdbc:mysql://192.254.225.120:3306/"+bd;
  
    Connection connection = null;
  
