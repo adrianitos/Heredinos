@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import javax.swing.JOptionPane;
+
 import project.connection.DbConnection;
 
 public class UserDao implements IUserDao {
@@ -21,8 +23,20 @@ public class UserDao implements IUserDao {
 
 	@Override
 	public void InserirUsuari(UserVO user) {
-		// TODO Auto-generated method stub
-		
+		DbConnection conex= new DbConnection();
+		  try {
+		   Statement estatuto = conex.getConnection().createStatement();
+		   estatuto.executeUpdate("INSERT INTO persona VALUES ('"+user.getIdPersona()+"', '"
+		     +persona.getNombrePersona()+"', '"+persona.getEdadPersona()+"', '"
+		     +persona.getProfesionPersona()+"', '"+persona.getTelefonoPersona()+"')");
+		   JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE);
+		   estatuto.close();
+		   conex.desconectar();
+		    
+		  } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		   JOptionPane.showMessageDialog(null, "No se Registro la persona");
+		  }
 	}
 
 	@Override
