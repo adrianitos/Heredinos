@@ -1,5 +1,6 @@
 package project.dao;
 
+import project.vo.PersonaVO;
 import project.vo.UserVO;
 
 import java.sql.PreparedStatement;
@@ -10,6 +11,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 import project.connection.DbConnection;
+import project.factory.HeredinFactory;
 
 public class UserDao implements IUserDao {
 
@@ -40,8 +42,15 @@ public class UserDao implements IUserDao {
 
 	@Override
 	public UserVO CrearUsuari(String nomUsuari, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		UserVO u=(UserVO) HeredinFactory.getObject("user");
+		
+		u.setNomUser(nomUsuari);
+		
+		u.setPassword(password);
+		
+		
+		return u;
 	}
 
 }

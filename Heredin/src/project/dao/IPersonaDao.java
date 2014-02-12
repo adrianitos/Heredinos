@@ -11,9 +11,9 @@ public interface IPersonaDao {
 	
 	public void RegistrarPersona(PersonaVO persona);
 	
-	public PersonaVO CrearPersona(int id, String nomUsuari, String nom, String cognom);
+	public PersonaVO CrearPersona(int id, String nomUsuari, String nom, int telefon);
 	
-	public PersonaVO Buscar(String dni, String User);
+	public PersonaVO Buscar(String User);
 	
 	public ArrayList<PersonaVO> Llistar();
 	
