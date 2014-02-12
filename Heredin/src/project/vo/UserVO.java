@@ -9,7 +9,9 @@ public class UserVO {
 	private String nomUser;
 	private String password;
 	
-	
+	public UserVO() {
+		super();
+	}
 	/**
 	 * @param nomUser
 	 * @param password
