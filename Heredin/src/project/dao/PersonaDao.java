@@ -17,12 +17,10 @@ import project.factory.HeredinFactory;
 public class PersonaDao implements IPersonaDao {
 
 	@Override
-	public void CrearPersona(int id, String nomUsuari, String nom, String adresa, int telefon, String email) {
+	public void CrearPersona(String nomUsuari, String nom, String adresa, int telefon, String email) {
 		
-		PersonaVO p=(PersonaVO) HeredinFactory.getObject("user");
-		
-		p.setId(id);
-		
+		PersonaVO p=(PersonaVO) HeredinFactory.getObject("persona");
+				
 		p.setNomUser(nomUsuari);
 		
 		p.setNomComplert(nom);
@@ -40,7 +38,7 @@ public class PersonaDao implements IPersonaDao {
 		   Statement estatuto = conex.getConnection().createStatement();
 		   
 		   //executar consulta
-		   estatuto.executeUpdate("INSERT INTO Persona VALUES ('"+p.getId()+"', '"+p.getNomUser()+"', '"+p.getNomComplert()+"', '" +p.getAdresa()+"', '"+p.getNumTelf()+"', '" + p.getEmail() + "')");
+		   estatuto.executeUpdate("INSERT INTO persona (nomUser, nomComplert, adresa, numTelf, email) VALUES ('"+p.getNomUser()+"', '"+p.getNomComplert()+"', '" +p.getAdresa()+"', "+p.getNumTelf()+", '" + p.getEmail() + "');");
 		   System.out.println("T'has registrat correctament");
 		   estatuto.close();
 		   conex.desconectar();

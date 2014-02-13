@@ -21,7 +21,7 @@ public class UserDao implements IUserDao {
 		
 		 PreparedStatement consulta;
 		try {
-			consulta = conex.getConnection().prepareStatement("SELECT * FROM user where nomUser='" + nom + "'");
+			consulta = conex.getConnection().prepareStatement("SELECT * FROM user where nomUser='" + nom + "';");
 			
 			ResultSet res = consulta.executeQuery();
 			
@@ -41,7 +41,7 @@ public class UserDao implements IUserDao {
 	@Override
 	public void CrearUsuari(String nomUsuari, String password) {
 		
-		if(!ExisteixUsuari(nomUsuari)){
+		if(ExisteixUsuari(nomUsuari)){
 			UserVO u=(UserVO) HeredinFactory.getObject("user");
 			
 			u.setNomUser(nomUsuari);

@@ -9,7 +9,7 @@ import project.vo.PersonaVO;
 
 public interface IPersonaDao {
 		
-	public void CrearPersona(int id, String nomUsuari, String nom, String adresa, int telefon, String email);
+	public void CrearPersona(String nomUsuari, String nom, String adresa, int telefon, String email);
 	
 	public PersonaVO Buscar(String User);
 	
