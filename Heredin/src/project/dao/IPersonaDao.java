@@ -8,10 +8,8 @@ import project.vo.PersonaVO;
 
 
 public interface IPersonaDao {
-	
-	public void RegistrarPersona(PersonaVO persona);
-	
-	public PersonaVO CrearPersona(int id, String nomUsuari, String nom, int telefon);
+		
+	public void CrearPersona(int id, String nomUsuari, String nom, String adresa, int telefon, String email);
 	
 	public PersonaVO Buscar(String User);
 	
@@ -21,7 +19,7 @@ public interface IPersonaDao {
 	
 	public void EliminarPersona(PersonaVO persona);
 	
-	public void AfegirCartera(CarteraVO cartera);
+	public void AfegirCartera(PersonaVO persona, CarteraVO cartera);
 	
 
 }

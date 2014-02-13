@@ -16,7 +16,7 @@ import project.vo.PersonaVO;
 public class CarteraDao  implements ICarteraDao{
 
 	@Override
-	public CarteraVO CrearCartera(int id, String adrecaPublica,String adrecaPrivada) {
+	public void CrearCartera(int id, String adrecaPublica,String adrecaPrivada) {
 		
 		CarteraVO c=(CarteraVO) HeredinFactory.getObject("cartera");
 		
@@ -26,19 +26,35 @@ public class CarteraDao  implements ICarteraDao{
 		
 		c.setAdrPriv(adrecaPrivada);
 		
-	
-		return c;
+		//crear connexio
+		DbConnection conex= new DbConnection();
+		try {
+			//Preparar connexio
+			Statement estatuto = conex.getConnection().createStatement();
+			//executar consulta
+			estatuto.executeUpdate("INSERT INTO cartera VALUES ('"+c.getId()+"', '"
+						   +c.getAdrPubl()+"', '"+c.getAdrPriv()+"', '"+c.getSaldo()+"')");
+			System.out.println("Cartera introduida correctament");
+			estatuto.close();
+			conex.desconectar();
+						    
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+				System.out.println("No s'ha pogut inserir correctament");
+			}
 	}
 
 	@Override
-	public void ModificarCartera(CarteraVO cartera) {
+	public void ModificarCartera(CarteraVO cartera, int saldo) {
 		
 		try {
 			DbConnection conex= new DbConnection();
 			
-		   PreparedStatement consulta = conex.getConnection().prepareStatement("update cartera set saldo='25'"+cartera.getSaldo() + "'");
+			cartera.setSaldo(cartera.getSaldo()+saldo);
+			
+		    PreparedStatement consulta = conex.getConnection().prepareStatement("update cartera set saldo="+cartera.getSaldo()+";");
 		   
-		   consulta.executeUpdate();
+		    consulta.executeUpdate();
 		          
 		    consulta.close();
 		          
@@ -54,7 +70,7 @@ public class CarteraDao  implements ICarteraDao{
 	}
 
 	@Override
-	public ArrayList<CarteraVO> Llistar() {
+	public ArrayList<CarteraVO> Llistar(PersonaVO persona) {
 		
 		//crea ArrayList de persones per guardarles
 				ArrayList<CarteraVO> carteres = new ArrayList<CarteraVO>();
@@ -64,7 +80,7 @@ public class CarteraDao  implements ICarteraDao{
 				     
 				  try {
 					  
-				   PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM cartera");
+				   PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT cartera.* FROM cartera,cartera_persona,persona WHERE persona.id=cartera_persona.id_persona AND cartera.id=cartera_persona.id_cartera AND persona.id="+persona.getId()+";");
 				   
 				   ResultSet res = consulta.executeQuery();
 				   

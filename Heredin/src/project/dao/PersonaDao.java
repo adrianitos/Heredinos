@@ -1,12 +1,15 @@
 package project.dao;
 
 import java.util.ArrayList;
+
 import project.vo.CarteraVO;
 import project.vo.PersonaVO;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import project.connection.DbConnection;
 import project.factory.HeredinFactory;
 
@@ -14,32 +17,7 @@ import project.factory.HeredinFactory;
 public class PersonaDao implements IPersonaDao {
 
 	@Override
-	public void RegistrarPersona(PersonaVO persona) {
-		
-		//crear connexio
-		DbConnection conex= new DbConnection();
-		  try {
-			  //Preparar connexio
-		   Statement estatuto = conex.getConnection().createStatement();
-		   
-		   //executar consulta
-		   estatuto.executeUpdate("INSERT INTO Persona VALUES ('"+persona.getId()+"', '"+persona.getNomUser()+"', '"+persona.getNomComplert()+"', '" +persona.getAdresa()+"', '"+persona.getNumTelf()+"')");
-		   System.out.println("T'has registrat correctament");
-		   estatuto.close();
-		   conex.desconectar();
-		    
-		  } catch (SQLException e) {
-		            System.out.println(e.getMessage());
-		            System.out.println("Connexio incorrecta");
-		  }
-		
-		
-		
-	}
-
-	
-	public PersonaVO CrearPersona(int id, String nomUsuari, String nom, int telefon) {
-		
+	public void CrearPersona(int id, String nomUsuari, String nom, String adresa, int telefon, String email) {
 		
 		PersonaVO p=(PersonaVO) HeredinFactory.getObject("user");
 		
@@ -49,12 +27,28 @@ public class PersonaDao implements IPersonaDao {
 		
 		p.setNomComplert(nom);
 		
-		p.setNomComplert(nom);
+		p.setAdresa(adresa);
 		
 		p.setNumTelf(telefon);
 		
-		return p;
+		p.setEmail(email);
 		
+		//crear connexio
+		DbConnection conex= new DbConnection();
+		  try {
+			  //Preparar connexio
+		   Statement estatuto = conex.getConnection().createStatement();
+		   
+		   //executar consulta
+		   estatuto.executeUpdate("INSERT INTO Persona VALUES ('"+p.getId()+"', '"+p.getNomUser()+"', '"+p.getNomComplert()+"', '" +p.getAdresa()+"', '"+p.getNumTelf()+"', '" + p.getEmail() + "')");
+		   System.out.println("T'has registrat correctament");
+		   estatuto.close();
+		   conex.desconectar();
+		    
+		  } catch (SQLException e) {
+		            System.out.println(e.getMessage());
+		            System.out.println("Connexio incorrecta");
+		  }
 	}
 
 	@Override
@@ -77,6 +71,7 @@ public class PersonaDao implements IPersonaDao {
 				    
 				    persona.setNumTelf((Integer.parseInt(res.getString("numTelf"))));
 				    
+				    persona.setEmail((res.getString("email")));
 				 
 			          res.close();
 			          
@@ -121,6 +116,7 @@ public class PersonaDao implements IPersonaDao {
 			    
 			    persona.setNumTelf((Integer.parseInt(res.getString("numTelf"))));
 			    
+			    persona.setEmail((res.getString("email")));
 			    
 			    //afegir persones
 			    persones.add(persona);
@@ -186,30 +182,26 @@ public class PersonaDao implements IPersonaDao {
 			  
 		   System.out.print("Operacio d'eliminar no realitzada");
 		  }
-	
-	
 	}
 
 	@Override
-	public void AfegirCartera(CarteraVO cartera) {
-		
+	public void AfegirCartera(PersonaVO persona, CarteraVO cartera) {
 		//crear connexio
-		DbConnection conex= new DbConnection();
-			 try {
+				DbConnection conex= new DbConnection();
+				try {
 					//Preparar connexio
-				   Statement estatuto = conex.getConnection().createStatement();
-				   
-				 //executar consulta
-				  estatuto.executeUpdate("INSERT INTO Cartera VALUES ('"+cartera.getId()+"', '"
-				   +cartera.getAdrPubl()+"', '"+cartera.getAdrPriv()+"', '"+cartera.getSaldo()+"')");
-				   System.out.println("Cartera introduida correctament");
-				   estatuto.close();
-				   conex.desconectar();
-				    
-				  } catch (SQLException e) {
-				            System.out.println(e.getMessage());
-				            System.out.println("No s'ha pogut inserir correctament");
-				  }
+					Statement estatuto = conex.getConnection().createStatement();
+					//executar consulta
+					estatuto.executeUpdate("INSERT INTO cartera_persona VALUES ("+persona.getId()+", "+cartera.getId()+");");
+					System.out.println("Cartera afegida correctament");
+					estatuto.close();
+					conex.desconectar();
+								    
+					} catch (SQLException e) {
+						System.out.println(e.getMessage());
+						System.out.println("No s'ha pogut afegir correctament");
+					}
+		
 				
 		
 	}

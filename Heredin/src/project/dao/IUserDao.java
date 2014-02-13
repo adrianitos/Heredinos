@@ -6,9 +6,7 @@ public interface IUserDao {
 	
 	public Boolean ExisteixUsuari(String nom);
 	
-	public void InserirUsuari(UserVO user);
-	
-	public UserVO CrearUsuari(String nomUsuari, String password);
+	public void CrearUsuari(String nomUsuari, String password);
 	
 	
 
