@@ -13,25 +13,24 @@ public class LoginServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String nomUser=request.getParameter("nomUser");
-		String password=request.getParameter("password");
-		String nomComplert=request.getParameter("nomComplert");
-		String adresa=request.getParameter("adresa");
-		int telefon=Integer.parseInt(request.getParameter("telefon"));
-		String email=request.getParameter("email");
+		String nomUser=request.getParameter("nomUser").trim();
+		String password=request.getParameter("password").trim();
 		
 		System.out.println(nomUser);
 		System.out.println(password);
-		System.out.println(nomComplert);
-		System.out.println(adresa);
-		System.out.println(telefon);
-		System.out.println(email);
 		
 		UserDao miUser = new UserDao();
-		PersonaDao miPersona = new PersonaDao();
+		//PersonaDao miPersona = new PersonaDao();
 		    
-		miUser.CrearUsuari(nomUser,password);
-		miPersona.CrearPersona(nomUser, nomComplert, adresa, telefon, email);
+		if(miUser.LoginUsuari(nomUser,password)){
+			//Entrar
+			System.out.println("Correcte!");
+		}else{
+			//Pag login + missatge usuari o pass incorrecte
+			System.out.println("Incorrecte!");
+		}
+		
+		//miPersona.CrearPersona(nomUser, nomComplert, adresa, telefon, email);
 		
 	   
 		  

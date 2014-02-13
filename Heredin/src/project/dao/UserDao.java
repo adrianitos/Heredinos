@@ -51,8 +51,8 @@ public class UserDao implements IUserDao {
 			DbConnection conex= new DbConnection();
 			  try {
 			   Statement estatuto = conex.getConnection().createStatement();
-			   estatuto.executeUpdate("INSERT INTO user VALUES ('"+u.getNomUser()+"', '"
-			     +u.getPassword()+"')");
+			   estatuto.executeUpdate("INSERT INTO user VALUES ('"+u.getNomUser().trim()+"', '"
+			     +u.getPassword().trim()+"')");
 			   System.out.println("T'has registrat correctament");
 			   estatuto.close();
 			   conex.desconectar();
@@ -67,4 +67,27 @@ public class UserDao implements IUserDao {
 		}
 	}
 
+	@Override
+	public Boolean LoginUsuari(String nom, String pass) {
+		
+		Boolean trobat=false;
+		
+		DbConnection conex= new DbConnection();
+		
+		 PreparedStatement consulta;
+		try {
+			consulta = conex.getConnection().prepareStatement("SELECT * FROM user WHERE nomUser='" + nom.trim() + "' AND password='"+pass.trim()+"'");
+			
+			ResultSet res = consulta.executeQuery();
+			System.out.println(res.getRow());
+			   if(res.getRow()>=1){
+				   trobat=true;   
+			   }
+		} catch (SQLException e) {
+			
+			System.out.print("Operacio no realitzada");
+		}
+	return trobat;
+	}
+	
 }

@@ -8,6 +8,6 @@ public interface IUserDao {
 	
 	public void CrearUsuari(String nomUsuari, String password);
 	
-	
+	public Boolean LoginUsuari(String nom, String pass);
 
 }
