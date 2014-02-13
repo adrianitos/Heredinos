@@ -9,17 +9,14 @@ public class Principal {
 
 	public static void main(String[] args) {
 				
-		UserVO u = (UserVO) HeredinFactory.getObject("user");
-	    u.setNomUser("Toby");
-	    u.setPassword("tody");
-
+		UserDao miUser = new UserDao();
 	    
-	    UserDao miUser = new UserDao();
+	    miUser.CrearUsuari("proba","probapass");
 	    
-	    miUser.InserirUsuari(u);
-	    
-	    
+	    PersonaDao miPersona = new PersonaDao();
 		
+	    System.out.println(miPersona.Llistar());
+	    
 	}
 
 }
