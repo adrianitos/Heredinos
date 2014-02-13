@@ -1,13 +1,11 @@
 package project.dao;
 
-import project.vo.UserVO;
-
 public interface IUserDao {
 	
-	public Boolean ExisteixUsuari(String nom);
+	Boolean existeixUsuari(String nom);
 	
-	public void CrearUsuari(String nomUsuari, String password);
+	void crearUsuari(String nomUsuari, String password);
 	
-	public Boolean LoginUsuari(String nom, String pass);
+	Boolean loginUsuari(String nom, String pass);
 
 }

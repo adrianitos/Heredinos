@@ -11,11 +11,11 @@ public class Principal {
 				
 		UserDao miUser = new UserDao();
 	    
-	    miUser.CrearUsuari("proba","probapass");
+	    miUser.crearUsuari("proba","probapass");
 	    
 	    PersonaDao miPersona = new PersonaDao();
 		
-	    System.out.println(miPersona.Llistar());
+	    System.out.println(miPersona.llistarPersona());
 	    
 	}
 

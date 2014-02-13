@@ -20,11 +20,11 @@ public class LoginServlet extends HttpServlet {
 		UserDao miUser = new UserDao();
 		PersonaDao miPersona = new PersonaDao();
 		    
-		if(miUser.LoginUsuari(nomUser,password)){
+		if(miUser.loginUsuari(nomUser,password)){
 			//Entrar
 			System.out.println("Correcte!");
-			System.out.println(miPersona.Buscar(nomUser).getNomUser());
-			System.out.println(miPersona.Buscar(nomUser).toString());
+			System.out.println(miPersona.buscarPersona(nomUser).getNomUser());
+			System.out.println(miPersona.buscarPersona(nomUser).toString());
 			//response.sendRedirect("tupath/tupagina.jsp");
 		}else{
 			//Pag login + missatge usuari o pass incorrecte

@@ -13,9 +13,9 @@ import project.factory.HeredinFactory;
 public class UserDao implements IUserDao {
 
 	@Override
-	public Boolean ExisteixUsuari(String nom) {
+	public Boolean existeixUsuari(String nom) {
 		
-		Boolean trobat=false;
+		Boolean trobat=true;
 		
 		DbConnection conex= new DbConnection();
 		
@@ -25,11 +25,13 @@ public class UserDao implements IUserDao {
 			
 			ResultSet res = consulta.executeQuery();
 			
-			   if(res.getRow()<1){
-				   
-				   trobat=true;
-				   
+			   if(res.next()){   
+				   trobat=false;  
 			   }
+			   res.close();
+			   consulta.close();
+			   conex.desconectar();
+			   
 		} catch (SQLException e) {
 			
 			System.out.print("Operacio no realitzada");
@@ -39,9 +41,9 @@ public class UserDao implements IUserDao {
 	
 
 	@Override
-	public void CrearUsuari(String nomUsuari, String password) {
+	public void crearUsuari(String nomUsuari, String password) {
 		
-		if(ExisteixUsuari(nomUsuari)){
+		if(existeixUsuari(nomUsuari)){
 			UserVO u=(UserVO) HeredinFactory.getObject("user");
 			
 			u.setNomUser(nomUsuari);
@@ -68,7 +70,7 @@ public class UserDao implements IUserDao {
 	}
 
 	@Override
-	public Boolean LoginUsuari(String nom, String pass) {
+	public Boolean loginUsuari(String nom, String pass) {
 		
 		Boolean trobat=false;
 		
@@ -82,6 +84,9 @@ public class UserDao implements IUserDao {
 			   if(res.next()){
 				   trobat=true;   
 			   }
+			   res.close();
+			   consulta.close();
+			   conex.desconectar();
 		} catch (SQLException e) {
 			
 			System.out.print("Operacio no realitzada");

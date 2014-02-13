@@ -30,8 +30,8 @@ public class RegistServlet extends HttpServlet {
 		UserDao miUser = new UserDao();
 		PersonaDao miPersona = new PersonaDao();
 		    
-		miUser.CrearUsuari(nomUser,password);
-		miPersona.CrearPersona(nomUser, nomComplert, adresa, telefon, email);
+		miUser.crearUsuari(nomUser,password);
+		miPersona.crearPersona(nomUser, nomComplert, adresa, telefon, email);
 		
 	   
 		  

@@ -17,7 +17,7 @@ import project.factory.HeredinFactory;
 public class PersonaDao implements IPersonaDao {
 
 	@Override
-	public void CrearPersona(String nomUsuari, String nom, String adresa, int telefon, String email) {
+	public void crearPersona(String nomUsuari, String nom, String adresa, int telefon, String email) {
 		
 		PersonaVO p=(PersonaVO) HeredinFactory.getObject("persona");
 				
@@ -50,7 +50,7 @@ public class PersonaDao implements IPersonaDao {
 	}
 
 	@Override
-	public PersonaVO Buscar(String User) {
+	public PersonaVO buscarPersona(String User) {
 		
 		try {
 				DbConnection conex= new DbConnection();
@@ -76,14 +76,11 @@ public class PersonaDao implements IPersonaDao {
 				    persona.setEmail((res.getString("email")));
 				 
 			          res.close();
-			          
 			          consulta.close();
-			          
 			          conex.desconectar();
 			          
 			          return persona;
 			   }
-			  
 			  } catch (Exception e) {
 				  
 			   System.out.print("La persona no existeix");
@@ -94,7 +91,7 @@ public class PersonaDao implements IPersonaDao {
 	}
 
 	@Override
-	public ArrayList<PersonaVO> Llistar() {
+	public ArrayList<PersonaVO> llistarPersona() {
 		
 		//crea ArrayList de persones per guardarles
 		ArrayList< PersonaVO> persones = new ArrayList< PersonaVO>();
@@ -133,14 +130,14 @@ public class PersonaDao implements IPersonaDao {
 		    
 		  } catch (Exception e) {
 			  
-		   System.out.print("No s'ha pogut fer el llistat");;
+		   System.out.print("No s'ha pogut fer el llistat");
 		  }
 		  
 		  return persones;
 	}
 
 	@Override
-	public Boolean ExisteixPersona(PersonaVO persona) {
+	public Boolean existeixPersona(PersonaVO persona) {
 		
 		Boolean trobat=false;
 		
@@ -152,11 +149,12 @@ public class PersonaDao implements IPersonaDao {
 			
 			ResultSet res = consulta.executeQuery();
 			
-			   if(res.next()){
-				   
-				   trobat=true;
-				   
+			   if(res.next()){ 
+				   trobat=true; 
 			   }
+			   res.close();
+			   consulta.close();
+			   conex.desconectar();
 		} catch (SQLException e) {
 			
 			System.out.print("Operacio no realitzada");
@@ -168,7 +166,7 @@ public class PersonaDao implements IPersonaDao {
 	}
 
 	@Override
-	public void EliminarPersona(PersonaVO persona) {
+	public void eliminarPersona(PersonaVO persona) {
 		
 		try {
 			DbConnection conex= new DbConnection();
@@ -183,6 +181,8 @@ public class PersonaDao implements IPersonaDao {
 		    
 		    System.out.print("Operacio d'eliminar realitzada correctament");
 		  
+			   consulta.close();
+			   conex.desconectar();
 		  } catch (Exception e) {
 			  
 		   System.out.print("Operacio d'eliminar no realitzada");
@@ -190,7 +190,7 @@ public class PersonaDao implements IPersonaDao {
 	}
 
 	@Override
-	public void AfegirCartera(PersonaVO persona, CarteraVO cartera) {
+	public void afegirCartera(PersonaVO persona, CarteraVO cartera) {
 		//crear connexio
 				DbConnection conex= new DbConnection();
 				try {
@@ -206,11 +206,5 @@ public class PersonaDao implements IPersonaDao {
 						System.out.println(e.getMessage());
 						System.out.println("No s'ha pogut afegir correctament");
 					}
-		
-				
-		
-	}
-
-	
-	
+	}	
 }

@@ -9,17 +9,17 @@ import project.vo.PersonaVO;
 
 public interface IPersonaDao {
 		
-	public void CrearPersona(String nomUsuari, String nom, String adresa, int telefon, String email);
+	void crearPersona(String nomUsuari, String nom, String adresa, int telefon, String email);
 	
-	public PersonaVO Buscar(String User);
+	PersonaVO buscarPersona(String user);
 	
-	public ArrayList<PersonaVO> Llistar();
+	ArrayList<PersonaVO> llistarPersona();
 	
-	public Boolean ExisteixPersona(PersonaVO persona);
+	Boolean existeixPersona(PersonaVO persona);
 	
-	public void EliminarPersona(PersonaVO persona);
+	void eliminarPersona(PersonaVO persona);
 	
-	public void AfegirCartera(PersonaVO persona, CarteraVO cartera);
+	void afegirCartera(PersonaVO persona, CarteraVO cartera);
 	
 
 }

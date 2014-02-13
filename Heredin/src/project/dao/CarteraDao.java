@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.swing.JOptionPane;
-
 import project.connection.DbConnection;
 import project.factory.HeredinFactory;
 import project.vo.CarteraVO;
@@ -16,7 +14,7 @@ import project.vo.PersonaVO;
 public class CarteraDao  implements ICarteraDao{
 
 	@Override
-	public void CrearCartera(int id, String adrecaPublica,String adrecaPrivada) {
+	public void crearCartera(int id, String adrecaPublica,String adrecaPrivada) {
 		
 		CarteraVO c=(CarteraVO) HeredinFactory.getObject("cartera");
 		
@@ -45,7 +43,7 @@ public class CarteraDao  implements ICarteraDao{
 	}
 
 	@Override
-	public void ModificarCartera(CarteraVO cartera, int saldo) {
+	public void modificarCartera(CarteraVO cartera, int saldo) {
 		
 		try {
 			DbConnection conex= new DbConnection();
@@ -70,7 +68,7 @@ public class CarteraDao  implements ICarteraDao{
 	}
 
 	@Override
-	public ArrayList<CarteraVO> Llistar(PersonaVO persona) {
+	public ArrayList<CarteraVO> llistarCartera(PersonaVO persona) {
 		
 		//crea ArrayList de persones per guardarles
 				ArrayList<CarteraVO> carteres = new ArrayList<CarteraVO>();
@@ -106,7 +104,7 @@ public class CarteraDao  implements ICarteraDao{
 				    
 				  } catch (Exception e) {
 					  
-				   System.out.print("No s'ha pogut fer el llistat");;
+				   System.out.print("No s'ha pogut fer el llistat");
 				  }
 				  
 				  return carteres;
