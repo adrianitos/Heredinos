@@ -110,8 +110,7 @@ public class PersonaVO {
 	public String toString() {
 		return "PersonaVO [id=" + id + ", nomUser=" + nomUser
 				+ ", nomComplert=" + nomComplert + ", adresa=" + adresa
-				+ ", numTelf=" + numTelf + "]";
-	}
- 
+				+ ", numTelf=" + numTelf + ", email=" + email + "]";
+	} 
 	
 }

@@ -79,8 +79,7 @@ public class UserDao implements IUserDao {
 			consulta = conex.getConnection().prepareStatement("SELECT * FROM user WHERE nomUser='" + nom.trim() + "' AND password='"+pass.trim()+"'");
 			
 			ResultSet res = consulta.executeQuery();
-			System.out.println(res.getRow());
-			   if(res.getRow()>=1){
+			   if(res.next()){
 				   trobat=true;   
 			   }
 		} catch (SQLException e) {

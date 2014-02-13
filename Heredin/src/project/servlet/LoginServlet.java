@@ -1,6 +1,7 @@
 package project.servlet;
 
 import java.io.*;
+import project.vo.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -15,16 +16,15 @@ public class LoginServlet extends HttpServlet {
 		
 		String nomUser=request.getParameter("nomUser").trim();
 		String password=request.getParameter("password").trim();
-		
-		System.out.println(nomUser);
-		System.out.println(password);
-		
+				
 		UserDao miUser = new UserDao();
-		//PersonaDao miPersona = new PersonaDao();
+		PersonaDao miPersona = new PersonaDao();
 		    
 		if(miUser.LoginUsuari(nomUser,password)){
 			//Entrar
 			System.out.println("Correcte!");
+			System.out.println(miPersona.Buscar(nomUser).getNomUser());
+			System.out.println(miPersona.Buscar(nomUser).toString());
 		}else{
 			//Pag login + missatge usuari o pass incorrecte
 			System.out.println("Incorrecte!");

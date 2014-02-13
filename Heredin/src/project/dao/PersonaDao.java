@@ -55,15 +55,19 @@ public class PersonaDao implements IPersonaDao {
 		try {
 				DbConnection conex= new DbConnection();
 				
-			   PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM persona where nomUser='" + User + "'");
+			   PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM persona where nomUser='" + User + "';");
 			   
 			   ResultSet res = consulta.executeQuery();
+			   
+			   if (res.next()){
 			   
 			   		PersonaVO persona=(PersonaVO) HeredinFactory.getObject("persona");
 			   
 				    persona.setId((Integer.parseInt(res.getString("id"))));
 				    
 				    persona.setNomUser((res.getString("nomUser")));
+				    
+				    persona.setNomComplert((res.getString("nomComplert")));
 				    
 				    persona.setAdresa((res.getString("adresa")));
 				    
@@ -78,6 +82,7 @@ public class PersonaDao implements IPersonaDao {
 			          conex.desconectar();
 			          
 			          return persona;
+			   }
 			  
 			  } catch (Exception e) {
 				  
@@ -109,6 +114,8 @@ public class PersonaDao implements IPersonaDao {
 			    persona.setId((Integer.parseInt(res.getString("id"))));
 			    
 			    persona.setNomUser((res.getString("nomUser")));
+			    
+			    persona.setNomComplert((res.getString("nomComplert")));
 			    
 			    persona.setAdresa((res.getString("adresa")));
 			    
@@ -145,7 +152,7 @@ public class PersonaDao implements IPersonaDao {
 			
 			ResultSet res = consulta.executeQuery();
 			
-			   if(res.getRow()<1){
+			   if(res.next()){
 				   
 				   trobat=true;
 				   
