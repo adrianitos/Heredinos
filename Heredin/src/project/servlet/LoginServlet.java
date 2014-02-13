@@ -15,7 +15,9 @@ public class LoginServlet extends HttpServlet {
 		
 		String nomUser=request.getParameter("nomUser");
 		String password=request.getParameter("password");
-		  
+		
+		System.out.println(nomUser);
+		
 		UserDao miUser = new UserDao();
 		    
 		miUser.CrearUsuari(nomUser,password);
