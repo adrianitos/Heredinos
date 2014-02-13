@@ -16,9 +16,31 @@ import project.factory.HeredinFactory;
 public class UserDao implements IUserDao {
 
 	@Override
-	public Boolean ExisteixUsuari(String nom, String dni) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean ExisteixUsuari(String nom) {
+		
+		Boolean trobat=false;
+		
+		DbConnection conex= new DbConnection();
+		
+		 PreparedStatement consulta;
+		try {
+			consulta = conex.getConnection().prepareStatement("SELECT * FROM user where nomUser='" + nom + "'");
+			
+			ResultSet res = consulta.executeQuery();
+			
+			   if(res.getRow()<1){
+				   
+				   trobat=true;
+				   
+			   }
+		} catch (SQLException e) {
+			
+			System.out.print("Operacio no realitzada");
+		}
+		   
+		   
+	
+	return trobat;
 	}
 
 	

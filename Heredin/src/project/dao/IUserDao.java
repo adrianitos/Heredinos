@@ -4,7 +4,7 @@ import project.vo.UserVO;
 
 public interface IUserDao {
 	
-	public Boolean ExisteixUsuari(String nom, String dni);
+	public Boolean ExisteixUsuari(String nom);
 	
 	public void InserirUsuari(UserVO user);
 	

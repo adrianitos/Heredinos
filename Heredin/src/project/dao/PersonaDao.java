@@ -23,9 +23,7 @@ public class PersonaDao implements IPersonaDao {
 		   Statement estatuto = conex.getConnection().createStatement();
 		   
 		   //executar consulta
-		   estatuto.executeUpdate("INSERT INTO Persona VALUES ('"+persona.getId()+"', '"
-		     +persona.getNomUser()+"', '"+persona.getNomComplert()+"', '"
-		     +persona.getAdresa()+"', '"+persona.getNumTelf()+"')");
+		   estatuto.executeUpdate("INSERT INTO Persona VALUES ('"+persona.getId()+"', '"+persona.getNomUser()+"', '"+persona.getNomComplert()+"', '" +persona.getAdresa()+"', '"+persona.getNumTelf()+"')");
 		   System.out.println("T'has registrat correctament");
 		   estatuto.close();
 		   conex.desconectar();
@@ -107,7 +105,9 @@ public class PersonaDao implements IPersonaDao {
 		  DbConnection conex= new DbConnection();
 		     
 		  try {
+			  
 		   PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM persona");
+		   
 		   ResultSet res = consulta.executeQuery();
 		   while(res.next()){
 			   
@@ -125,6 +125,7 @@ public class PersonaDao implements IPersonaDao {
 			    //afegir persones
 			    persones.add(persona);
 		          }
+		   
 		          res.close();
 		          consulta.close();
 		          conex.desconectar();
@@ -139,8 +140,30 @@ public class PersonaDao implements IPersonaDao {
 
 	@Override
 	public Boolean ExisteixPersona(PersonaVO persona) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Boolean trobat=false;
+		
+		DbConnection conex= new DbConnection();
+		
+		   PreparedStatement consulta;
+		try {
+			consulta = conex.getConnection().prepareStatement("SELECT * FROM persona where nomUser='" + persona.getNomUser() + "'");
+			
+			ResultSet res = consulta.executeQuery();
+			
+			   if(res.getRow()<1){
+				   
+				   trobat=true;
+				   
+			   }
+		} catch (SQLException e) {
+			
+			System.out.print("Operacio no realitzada");
+		}
+		   
+		   
+	
+	return trobat;
 	}
 
 	@Override
@@ -151,10 +174,7 @@ public class PersonaDao implements IPersonaDao {
 			
 		   PreparedStatement consulta = conex.getConnection().prepareStatement("delete FROM persona where nomUser='" + persona.getNomUser() + "'");
 		   
-		   ResultSet res = consulta.executeQuery();
-		   
-	
-		    res.close();
+		   consulta.executeUpdate();
 		          
 		    consulta.close();
 		          
