@@ -123,11 +123,11 @@
                                     
                                         
                                 
-                            <form action="http://localhost:8080/Heredin/LoginServlet" id="defaultForm" method="post" class="form-horizontal">
+                            <form action="http://localhost:8080/Heredin/LoginServlet" id="defaultForm" method="POST" class="form-horizontal">
                         <div class="form-group">
                             <label class="col-lg-5 control-label">Usuario</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" name="username" id="nomUser" />
+                                <input type="text" class="form-control" name="nomUser" id="nomUser" />
                             </div>
                         </div>
 
@@ -236,7 +236,7 @@ $(document).ready(function() {
     $('#defaultForm').bootstrapValidator({
         message: 'falta el usuario',
         fields: {
-            username: {
+            nomUser: {
                 message: 'El usuario no es valido',
                 validators: {
                     notEmpty: {
