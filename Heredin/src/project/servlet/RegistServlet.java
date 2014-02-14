@@ -33,7 +33,7 @@ public class RegistServlet extends HttpServlet {
 		miUser.crearUsuari(nomUser,password);
 		miPersona.crearPersona(nomUser, nomComplert, adresa, telefon, email);
 		
-	   
+		response.sendRedirect("login.html");
 		  
 	}
 }

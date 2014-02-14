@@ -14,7 +14,7 @@ public class LoginServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String nomUser=request.getParameter("nomUser").trim();
+	/*	String nomUser=request.getParameter("nomUser").trim();
 		String password=request.getParameter("password").trim();
 				
 		UserDao miUser = new UserDao();
@@ -25,12 +25,12 @@ public class LoginServlet extends HttpServlet {
 			System.out.println("Correcte!");
 			System.out.println(miPersona.buscarPersona(nomUser).getNomUser());
 			//System.out.println(miPersona.buscarPersona(nomUser).toString());
-			response.sendRedirect("index.html");
+			response.sendRedirect("user.jsp");
 		}else{
 			//Pag login + missatge usuari o pass incorrecte
 			System.out.println("Incorrecte!");
 		}
-		
+		*/
 		//miPersona.CrearPersona(nomUser, nomComplert, adresa, telefon, email);
 		
 	   

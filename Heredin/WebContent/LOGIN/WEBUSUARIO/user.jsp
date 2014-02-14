@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-js one-page-layout" data-classic-layout="false" data-mobile-only-classic-layout="true" data-inanimation="fadeInUp" data-outanimation="fadeOutDownBig"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
 
 	<head>
@@ -52,13 +54,43 @@
 		<!-- InstanceBeginEditable name="head" -->
         <!-- InstanceEndEditable -->
         
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	</head>
     
     
     
 	<body>
-    	
-        
+   
+   	<%@ page import="project.dao.*" %>
+	<%@ page import="project.vo.*" %>
+	<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+	<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
+	<% 
+	PersonaVO p = null;
+		if (request.getParameter("nomUser") !=null){
+			String nomUser=request.getParameter("nomUser").trim();
+			String password=request.getParameter("password").trim();
+			
+			UserDao miUser = new UserDao();
+			PersonaDao miPersona = new PersonaDao();
+		    
+			if(miUser.loginUsuari(nomUser,password)){
+				//Entrar
+				System.out.println("Correcte!");
+				p = miPersona.buscarPersona(nomUser);
+				System.out.println(p.getNomUser());
+			}else{
+				//Pag login + missatge usuari o pass incorrecte
+				System.out.println("Incorrecte!");
+				response.sendRedirect("login.html");
+			}
+		}else{
+			response.sendRedirect("login.html");
+		} %>
         
         
         <!-- CONTAINER -->
@@ -79,7 +111,7 @@
                     <!-- InstanceBeginEditable name="Menu-Content" -->
                     
                     <li><a href="#/resume">Wallets (carteras) y ultimos movimientos</a></li>
-                    <li><a href="#/contact">Datos personales del usuario y informaciÃ³n</a></li>
+                    <li><a href="#/contact">Datos personales del usuario y información</a></li>
                 
                     
                     <!-- InstanceEndEditable -->
@@ -138,16 +170,16 @@
                                 <!-- LETTER -->
                                 <div class="letter">
                                     
-                                    <h4 class="letter-title">Nombre Personal Del Cliente</h4>
+                                    <h4 class="letter-title"><%= p.getNomComplert() %></h4>
                                     
                                     <div class="stamp">
                                       <img src="./images/site/stamp-image.png" alt="stamp" />
                                     </div>
                                   
                                     <div class="letter-info">
-                                        <p><i class="icon-at"></i>emaildelcliente@gmail.com</p>
-                                        <p><i class="icon-phone"></i>123 456 78 99</p>
-                                        <p><i class="icon-location"></i>DirecciÃ³n y datos del cliente</p>
+                                        <p><i class="icon-at"></i><%= p.getEmail() %></p>
+                                        <p><i class="icon-phone"></i><%= p.getNumTelf() %></p>
+                                        <p><i class="icon-location"></i><%= p.getAdresa() %></p>
                                     </div>
                                     
                                   </div>    
@@ -242,8 +274,11 @@
                                <!-- col 6/12 -->
                                <div class="col-md-6">
                                 
-
-                                <h1>TOTAL:  <span>231.403<i>  Heredines</i></span></h1>
+                                <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://192.254.225.120:3306/kriptsof_heredin" user="kriptsof_admin1"  password="admin"/>
+								<sql:query dataSource="${snapshot}" var="result">
+									SELECT SUM(saldo) as total FROM cartera,cartera_persona,persona WHERE persona.nomUser='<%= p.getNomUser() %>' AND persona.id=cartera_persona.id_persona AND cartera.id=cartera_persona.id_cartera;
+								</sql:query>
+                                <h1>TOTAL:  <span><c:out value="${result.rows[0].total}"/><i>  Heredines</i></span></h1>
                                     <h2><span><i class="icon-cog-1"></i>CARTERAS</span></h2>
                                 
                                     <!-- DEV SKILLS -->
@@ -257,7 +292,7 @@
                                             </div>
                                         </div>
                                         <!-- .skill-unit -->
-                                         <h2 class="section-title"><span><i class="icon-cog-1"></i>Cartera nÃºmero 2</span></h2>
+                                         <h2 class="section-title"><span><i class="icon-cog-1"></i>Cartera número 2</span></h2>
                                         
                                         <!-- .skill-unit -->
                                         <div class="skill-unit">
@@ -268,7 +303,7 @@
                                         </div>
                                         <!-- .skill-unit -->
 
-                                        <h2 class="section-title"><span><i class="icon-cog-1"></i>Cartera nÃºmero 3</span></h2>
+                                        <h2 class="section-title"><span><i class="icon-cog-1"></i>Cartera número 3</span></h2>
                                         
                                         <!-- .skill-unit -->
                                         <div class="skill-unit">
@@ -279,7 +314,7 @@
                                         </div>
                                         <!-- .skill-unit -->
 
-                                        <h2 class="section-title"><span><i class="icon-cog-1"></i>Cartera nÃºmero 4</span></h2>
+                                        <h2 class="section-title"><span><i class="icon-cog-1"></i>Cartera número 4</span></h2>
                                         
                                         <!-- .skill-unit -->
                                         <div class="skill-unit">
@@ -293,23 +328,7 @@
                                     </div>
                                     <!-- DEV SKILLS -->
                                     
-                                    
-                                    
-                                    <h2><span><i class="icon-brush"></i>TOTAL HEREDINES</span></h2>
-                                    
-                                    <!-- DESIGN SKILLS -->
-                                    <div class="skillset">
-                                        
-                                        <!-- .skill-unit -->
-                                        <div class="skill-unit">
-                                            <h4>suma heredines</h4>
-                                            <div class="bar" data-percent="100">
-                                                <div class="progress"></div>
-                                            </div>
-                                        </div>
-                                        <!-- .skill-unit -->
-                                
-                                    </div>
+
                                     <!-- DESIGN SKILLS -->
                                     
                                     
