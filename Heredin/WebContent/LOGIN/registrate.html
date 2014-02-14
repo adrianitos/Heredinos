@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es" class="no-js one-page-layout" data-classic-layout="false" data-mobile-only-classic-layout="true" data-inanimation="fadeInUp" data-outanimation="fadeOutDownBig"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
 
-    <head>
+	<head>
     
-        <meta charset="utf-8" />
+		<meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <meta name="description" content="Heredin " />
         <meta name="keywords" content="vcard, html5, Registrate" />
@@ -14,8 +14,8 @@
         <!-- FAV and TOUCH ICONS -->
         <link rel="shortcut icon" href="./images/ico/favicon.ico" />
         <link rel="apple-touch-icon" href="./images/ico/apple-touch-icon.png" />
-        
-        <script src="./js/modernizr.custom.js"></script>
+		
+		<script src="./js/modernizr.custom.js"></script>
          
         <!-- FONTS -->
         <link href='../../fonts.googleapis.com/css_8e1dc5f6.css' rel='stylesheet' type='text/css' />
@@ -49,10 +49,10 @@
         <link rel="stylesheet" class="base-skin" type="text/css" href="#" />
         
         
-        <!-- InstanceBeginEditable name="head" -->
+		<!-- InstanceBeginEditable name="head" -->
         <!-- InstanceEndEditable -->
         
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
         <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.css"/>
         <link rel="stylesheet" href="./dist/css/bootstrapValidator.css"/>
@@ -64,16 +64,16 @@
 
 </head>
     
-    <body>
+	<body>
      
         <!-- CONTAINER -->
-        <div class="container" id="container">
-            
+		<div class="container" id="container">
+			
             <!-- HEADER -->
             <header class="header">
             
                 <img src="./images/site/avatar.png" alt="avatar" />
-                
+				
                 <!-- NAV MENU -->
                 <ul class="vs-nav">
                     
@@ -97,13 +97,13 @@
 
                     
                     <!-- InstanceEndEditable -->
-                    
+                	
                 </ul>
                 <!-- NAV MENU -->
                 
             
                 
-            </header>
+			</header>
             <!-- HEADER -->
             
      <!-- PAGE : Login -->
@@ -115,7 +115,7 @@
                             <!-- column 8/12 -->
                             <div class="col-md-12">
                                 
-                                  <h2 class="section-title center"><span><i class="icon-leaf"></i><b>LOGIN</b></span></h2>
+                                  <h2 class="section-title center"><span><i class="icon-leaf"></i><b>REGISTRATE</b></span></h2>
                                 
                                 <!-- intro -->
                                 <div class="intro">
@@ -123,7 +123,7 @@
                                     
                                         
                                 
-                            <form action="http://localhost:8080/Heredin/LoginServlet" id="defaultForm" method="post" class="form-horizontal">
+                            <form action="http://localhost:8080/Heredin/RegistServlet" id="defaultForm" method="post" class="form-horizontal">
                         <div class="form-group">
                             <label class="col-lg-5 control-label">Usuario</label>
                             <div class="col-lg-5">
@@ -139,8 +139,44 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-lg-5 control-label">Reescribir contraseña</label>
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" name="confirmPassword" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Nombre completo</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="nombrecompleto" id="nomComplert" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Dirección</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="direccion" id="adresa" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Telefono</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="telefono" id="telefono" />
+                            </div>
+                        </div>
+
+                         <div class="form-group">
+                            <label class="col-lg-5 control-label">Email</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="email" id="email"/>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
                             <div class="col-lg-5 col-lg-offset-3">
-                                <button type="submit" class="btn btn-lg btn-success" ><b>Login</b></button>
+                                <button type="submit" class="btn btn-lg btn-success" ><b>Registrate</b></button>
                             </div>
                         </div>
                     </form>
@@ -163,16 +199,16 @@
                 <!-- PAGE : Registrate -->
             
             <!-- WRAPPER -->
-            <div class="wrapper">
+			<div class="wrapper">
             
             
             
-                <!-- InstanceBeginEditable name="Page-Content" -->
+				<!-- InstanceBeginEditable name="Page-Content" -->
                 
                 
-                
+				
                             <!-- column 8/12 -->
-                            
+                        	
                             
                             <!-- column 4/12 -->
  
@@ -193,17 +229,17 @@
         <!-- InstanceEndEditable -->
         
         
-        
+		
         
         <!-- SCRIPTS -->
       <!--    <script src="./js/jquery-1.10.2.min.js"></script>
-        <script src="./js/jquery-migrate-1.2.1.min.js"></script>
+	   	<script src="./js/jquery-migrate-1.2.1.min.js"></script>
         <script src="./js/jquery.address-1.5.min.js"></script>
        <script src="./js/triple.layout.js"></script>
         <script src="./js/smoothscroll.js"></script>
         <script src="./js/nprogress/nprogress.js"></script>
         <script src="./js/fastclick.js"></script>
-        <script src="./js/jquery.imagesloaded.min.js"></script>
+		<script src="./js/jquery.imagesloaded.min.js"></script>
         <script src="./js/jquery.isotope.min.js"></script>
         <script src="./js/jquery.flexslider-min.js"></script>
         <script src="./js/jquery.fitvids.js"></script>
@@ -228,7 +264,7 @@
         
         <!--************************** STYLE SWITCHER -->
         
-        <script type="text/javascript">
+		<script type="text/javascript">
 $(document).ready(function() {
     // Generate a simple captcha
 
@@ -253,10 +289,66 @@ $(document).ready(function() {
                     }
                 }
             },
+            nombrecompleto: {
+                message: 'falta el nombre completo',
+                validators: {
+                    notEmpty: {
+                        message: 'el nombre no puede estar vacio'
+                    },
+                }
+            },
+            direccion: {
+                message: 'falta la dirección',
+                validators: {
+                    notEmpty: {
+                        message: 'la direccion no puede estar vacia'
+                    },
+                }
+            },
+             telefono: {
+                message: 'falta el telefono',
+                validators: {
+                    notEmpty: {
+                        message: 'el telefono no puede estar vacio'
+                    },
+                }
+            },
+      email: {
+                message: 'falta el email',
+                validators: {
+                    notEmpty: {
+                        message: 'el email no puede estar vacio'
+                        },
+                    emailAddress: {
+
+                        message: 'No es una dirección de email'
+                    
+                    },
+                }
+            },
             password: {
                 validators: {
                     notEmpty: {
                         message: 'La contraseña es obligatoria y no puede quedar en blanco'
+                    },
+                    identical: {
+                        field: 'confirmPassword',
+                        message: 'El password no coincide'
+                    },
+                    different: {
+                        field: 'username',
+                        message: 'la contraseña no puede coincidir con el password'
+                    }
+                }
+            },
+            confirmPassword: {
+                validators: {
+                    notEmpty: {
+                        message: 'La contraseña es obligatoria y no puede quedar en blanco'
+                    },
+                    identical: {
+                        field: 'password',
+                        message: 'la contraseña no puede coincidir con el password'
                     },
                     different: {
                         field: 'username',
@@ -280,5 +372,5 @@ $(document).ready(function() {
 });
 </script>
         
-    </body>
+	</body>
 <!-- InstanceEnd --></html>
