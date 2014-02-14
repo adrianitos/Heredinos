@@ -123,11 +123,11 @@
                                     
                                         
                                 
-                            <form action="http://localhost:8080/Heredin/RegistServlet" id="defaultForm" method="post" class="form-horizontal">
+                            <form action="http://localhost:8080/Heredin/RegistServlet" id="defaultForm" method="POST" class="form-horizontal">
                         <div class="form-group">
                             <label class="col-lg-5 control-label">Usuario</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" name="username" id="nomUser" />
+                                <input type="text" class="form-control" name="nomUser" id="nomUser" />
                             </div>
                         </div>
 
@@ -141,21 +141,21 @@
                         <div class="form-group">
                             <label class="col-lg-5 control-label">Reescribir contraseña</label>
                             <div class="col-lg-5">
-                                <input type="password" class="form-control" name="confirmPassword" />
+                                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-lg-5 control-label">Nombre completo</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" name="nombrecompleto" id="nomComplert" />
+                                <input type="text" class="form-control" name="nomComplert" id="nomComplert" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-lg-5 control-label">Dirección</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" name="direccion" id="adresa" />
+                                <input type="text" class="form-control" name="adresa" id="adresa" />
                             </div>
                         </div>
 
@@ -272,7 +272,7 @@ $(document).ready(function() {
     $('#defaultForm').bootstrapValidator({
         message: 'falta el usuario',
         fields: {
-            username: {
+            nomUser: {
                 message: 'El usuario no es valido',
                 validators: {
                     notEmpty: {
@@ -289,7 +289,7 @@ $(document).ready(function() {
                     }
                 }
             },
-            nombrecompleto: {
+            nomComplert: {
                 message: 'falta el nombre completo',
                 validators: {
                     notEmpty: {
@@ -297,7 +297,7 @@ $(document).ready(function() {
                     },
                 }
             },
-            direccion: {
+            adresa: {
                 message: 'falta la dirección',
                 validators: {
                     notEmpty: {
