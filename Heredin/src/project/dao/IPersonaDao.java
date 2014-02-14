@@ -6,9 +6,11 @@ import project.vo.CarteraVO;
 import project.vo.PersonaVO;
 
 
-
+/**
+ * Interface definition
+ */
 public interface IPersonaDao {
-		
+	/** methods definition */	
 	void crearPersona(String nomUsuari, String nom, String adresa, int telefon, String email);
 	
 	PersonaVO buscarPersona(String user);

@@ -16,7 +16,11 @@ import project.factory.HeredinFactory;
 
 public class PersonaDao implements IPersonaDao {
 
-	@Override
+	/**
+	 * Crea un objecte persona i l'insereix a la base de dades
+	 * 
+	 * @param String nomUsuari, String nom, String adresa, int telefon, String email, parametres per crear la persona
+	 */
 	public void crearPersona(String nomUsuari, String nom, String adresa, int telefon, String email) {
 		
 		PersonaVO p=(PersonaVO) HeredinFactory.getObject("persona");
@@ -49,7 +53,13 @@ public class PersonaDao implements IPersonaDao {
 		  }
 	}
 
-	@Override
+	/**
+	 * Cerca un objecte persona
+	 * 
+	 * @param String user, nom de l'usuari a cercar
+	 * 
+	 * @return PersonaVO
+	 */
 	public PersonaVO buscarPersona(String User) {
 		
 		try {
@@ -90,7 +100,12 @@ public class PersonaDao implements IPersonaDao {
 		return null;
 	}
 
-	@Override
+	/**
+	 * Llista les persones 
+	 * 
+	 * 
+	 * @return ArrayList<PersonaVO>
+	 */
 	public ArrayList<PersonaVO> llistarPersona() {
 		
 		//crea ArrayList de persones per guardarles
@@ -136,7 +151,13 @@ public class PersonaDao implements IPersonaDao {
 		  return persones;
 	}
 
-	@Override
+	/**
+	 * Cerca un objecte persona
+	 * 
+	 * @param PersonaVO persona, persona a cercar
+	 * 
+	 * @return true si la persona es troba a la base de dades
+	 */
 	public Boolean existeixPersona(PersonaVO persona) {
 		
 		Boolean trobat=false;
@@ -165,7 +186,12 @@ public class PersonaDao implements IPersonaDao {
 	return trobat;
 	}
 
-	@Override
+	/**
+	 * Elimina un objecte persona
+	 * 
+	 * @param PersonaVO persona, persona a eliminar
+	 * 
+	 */
 	public void eliminarPersona(PersonaVO persona) {
 		
 		try {
@@ -189,7 +215,12 @@ public class PersonaDao implements IPersonaDao {
 		  }
 	}
 
-	@Override
+	/**
+	 * Afegeix un objecte cartera
+	 * 
+	 * @param PersonaVO persona, Cartera VO cartera, objectes a inserir
+	 * 
+	 */
 	public void afegirCartera(PersonaVO persona, CarteraVO cartera) {
 		//crear connexio
 				DbConnection conex= new DbConnection();

@@ -13,7 +13,12 @@ import project.vo.PersonaVO;
 
 public class CarteraDao  implements ICarteraDao{
 
-	@Override
+	/**
+	 * Crea un objecte cartera
+	 * 
+	 * @param int id, String adrecaPublica,String adrecaPrivada, parametres per crear la cartera
+	 * 
+	 */
 	public void crearCartera(int id, String adrecaPublica,String adrecaPrivada) {
 		
 		CarteraVO c=(CarteraVO) HeredinFactory.getObject("cartera");
@@ -42,7 +47,12 @@ public class CarteraDao  implements ICarteraDao{
 			}
 	}
 
-	@Override
+	/**
+	 * Modifica un objecte cartera
+	 * 
+	 * @param CarteraVO cartera, int saldo, parametres per modificar la cartera
+	 * 
+	 */
 	public void modificarCartera(CarteraVO cartera, int saldo) {
 		
 		try {
@@ -67,7 +77,13 @@ public class CarteraDao  implements ICarteraDao{
 		
 	}
 
-	@Override
+	/**
+	 * Fa un llistat de carteres la de persona
+	 * 
+	 * @param PersonaVO persona, persona de la cual es fara el llistat
+	 * 
+	 * @return ArrayList de carteres
+	 */
 	public ArrayList<CarteraVO> llistarCartera(PersonaVO persona) {
 		
 		//crea ArrayList de persones per guardarles

@@ -1,6 +1,11 @@
 package project.dao;
 
+/**
+ * Interface definition
+ */
 public interface IUserDao {
+	
+	/** methods definition */
 	
 	Boolean existeixUsuari(String nom);
 	

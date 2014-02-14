@@ -10,9 +10,17 @@ import java.sql.Statement;
 import project.connection.DbConnection;
 import project.factory.HeredinFactory;
 
+/**
+ * Class definition
+ */
 public class UserDao implements IUserDao {
 
-	@Override
+	/**
+	 * Comprava si l'usuari existeix a la base de dades
+	 * 
+	 * @param String nom,nom de l'usuari a cercar
+	 * @return cert si l'usuari es troba a la base de dades
+	 */
 	public Boolean existeixUsuari(String nom) {
 		
 		Boolean trobat=true;
@@ -40,7 +48,11 @@ public class UserDao implements IUserDao {
 	}
 	
 
-	@Override
+	/**
+	 * Crea un nou usuari i l'insereix a la base de dades
+	 * 
+	 * @param String nomUsuari, String password, parametres a processar
+	 */
 	public void crearUsuari(String nomUsuari, String password) {
 		
 		if(existeixUsuari(nomUsuari)){
@@ -69,7 +81,12 @@ public class UserDao implements IUserDao {
 		}
 	}
 
-	@Override
+	/**
+	 * Comprava que l'usuari ha fet login
+	 * 
+	 * @param String nom, String pass params to be procesed
+	 * @return cert si l'usuari es troba a la base de dades
+	 */
 	public Boolean loginUsuari(String nom, String pass) {
 		
 		Boolean trobat=false;
