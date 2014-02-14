@@ -24,8 +24,8 @@ public class LoginServlet extends HttpServlet {
 			//Entrar
 			System.out.println("Correcte!");
 			System.out.println(miPersona.buscarPersona(nomUser).getNomUser());
-			System.out.println(miPersona.buscarPersona(nomUser).toString());
-			//response.sendRedirect("tupath/tupagina.jsp");
+			//System.out.println(miPersona.buscarPersona(nomUser).toString());
+			response.sendRedirect("index.html");
 		}else{
 			//Pag login + missatge usuari o pass incorrecte
 			System.out.println("Incorrecte!");
