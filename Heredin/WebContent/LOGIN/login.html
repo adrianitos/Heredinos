@@ -243,14 +243,10 @@ $(document).ready(function() {
                         message: 'El usuario no puede estar vacio'
                     },
                     stringLength: {
-                        min: 6,
+                        min: 3,
                         max: 30,
-                        message: 'El usuario tiene que ser minimo de 6 letras y maximo de 30'
+                        message: 'El usuario tiene que ser minimo de 3 letras y maximo de 30'
                     },
-                    different: {
-                        field: 'password',
-                        message: 'El usuario y la contraseña no pueden ser el mismo'
-                    }
                 }
             },
             password: {
@@ -258,10 +254,6 @@ $(document).ready(function() {
                     notEmpty: {
                         message: 'La contraseña es obligatoria y no puede quedar en blanco'
                     },
-                    different: {
-                        field: 'username',
-                        message: 'la contraseña no puede coincidir con el password'
-                    }
                 }
             },
             captcha: {
