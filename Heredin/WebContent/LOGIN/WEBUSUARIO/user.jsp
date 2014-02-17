@@ -70,8 +70,9 @@
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
 	<% 
-	PersonaVO p = null;
-		if (request.getParameter("nomUser") !=null){
+		PersonaVO p = new PersonaVO();
+	try{	
+	if (request.getParameter("nomUser") !=null){
 			String nomUser=request.getParameter("nomUser").trim();
 			String password=request.getParameter("password").trim();
 			
@@ -85,12 +86,21 @@
 				System.out.println(p.getNomUser());
 			}else{
 				//Pag login + missatge usuari o pass incorrecte
-				System.out.println("Incorrecte!");
-				response.sendRedirect("login.html");
-			}
+			%>
+				<script language="JavaScript" type="text/javascript">
+				if (confirm("este texto es el que modificas")){
+					<%System.out.println("Incorrecte!");
+					
+					response.sendRedirect("http://localhost:8080/Heredin/LOGIN/login.html");%>
+				}
+				</script>
+			<%}
 		}else{
-			response.sendRedirect("login.html");
-		} %>
+			response.sendRedirect("http://localhost:8080/Heredin/LOGIN/login.html");
+		}}catch(Exception e){
+			e.getMessage();
+		}
+		%>
         
         
         <!-- CONTAINER -->
