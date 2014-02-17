@@ -75,10 +75,8 @@
 	if (request.getParameter("nomUser") !=null){
 			String nomUser=request.getParameter("nomUser").trim();
 			String password=request.getParameter("password").trim();
-			
 			UserDao miUser = new UserDao();
 			PersonaDao miPersona = new PersonaDao();
-		    
 			if(miUser.loginUsuari(nomUser,password)){
 				//Entrar
 				System.out.println("Correcte!");
@@ -86,15 +84,9 @@
 				System.out.println(p.getNomUser());
 			}else{
 				//Pag login + missatge usuari o pass incorrecte
-			%>
-				<script language="JavaScript" type="text/javascript">
-				if (confirm("este texto es el que modificas")){
-					<%System.out.println("Incorrecte!");
-					
-					response.sendRedirect("http://localhost:8080/Heredin/LOGIN/login.html");%>
+				System.out.println("Incorrecte!");	
+				response.sendRedirect("http://localhost:8080/Heredin/LOGIN/login.html");
 				}
-				</script>
-			<%}
 		}else{
 			response.sendRedirect("http://localhost:8080/Heredin/LOGIN/login.html");
 		}}catch(Exception e){
