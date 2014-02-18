@@ -280,54 +280,29 @@
 								<sql:query dataSource="${snapshot}" var="result">
 									SELECT SUM(saldo) as total FROM cartera,cartera_persona,persona WHERE persona.nomUser='<%= p.getNomUser() %>' AND persona.id=cartera_persona.id_persona AND cartera.id=cartera_persona.id_cartera;
 								</sql:query>
+								<sql:query dataSource="${snapshot}" var="result2">
+									SELECT * FROM cartera,cartera_persona,persona WHERE persona.nomUser='<%= p.getNomUser() %>' AND persona.id=cartera_persona.id_persona AND cartera.id=cartera_persona.id_cartera;
+								</sql:query>
                                 <h1>TOTAL:  <span><c:out value="${result.rows[0].total}"/><i>  Heredines</i></span></h1>
                                     <h2><span><i class="icon-cog-1"></i>CARTERAS</span></h2>
-                                
-                                    <!-- DEV SKILLS -->
+                                <c:forEach var="row" items="${result2.rows}">
+                                	
+  									<!-- DEV SKILLS -->
                                     <div class="skillset">
                                     <h2 class="section-title"><span><i class="icon-cog-1"></i>Cartera principal</span></h2>
                                         <!-- .skill-unit -->
                                         <div class="skill-unit">
-                                            <h4>132.620 H</h4>
-                                            <div class="bar" data-percent="100">
+                                            <h4><c:out value="${row.saldo}" /> H</h4>
+                                            <div class="bar" data-percent="${(row.saldo/result.rows[0].total)*100}">
                                                 <div class="progress"></div>
                                             </div>
                                         </div>
                                         <!-- .skill-unit -->
-                                         <h2 class="section-title"><span><i class="icon-cog-1"></i>Cartera número 2</span></h2>
-                                        
-                                        <!-- .skill-unit -->
-                                        <div class="skill-unit">
-                                            <h4>42.360 H</h4>
-                                            <div class="bar" data-percent="50">
-                                                <div class="progress"></div>
-                                            </div>
-                                        </div>
-                                        <!-- .skill-unit -->
+  									</div>
+  									
+								</c:forEach>
 
-                                        <h2 class="section-title"><span><i class="icon-cog-1"></i>Cartera número 3</span></h2>
-                                        
-                                        <!-- .skill-unit -->
-                                        <div class="skill-unit">
-                                            <h4>72.320 H</h4>
-                                            <div class="bar" data-percent="70">
-                                                <div class="progress"></div>
-                                            </div>
-                                        </div>
-                                        <!-- .skill-unit -->
 
-                                        <h2 class="section-title"><span><i class="icon-cog-1"></i>Cartera número 4</span></h2>
-                                        
-                                        <!-- .skill-unit -->
-                                        <div class="skill-unit">
-                                            <h4>12.320 H</h4>
-                                            <div class="bar" data-percent="20">
-                                                <div class="progress"></div>
-                                            </div>
-                                        </div>
-                                        <!-- .skill-unit -->
-                                    
-                                    </div>
                                     <!-- DEV SKILLS -->
                                     
 
