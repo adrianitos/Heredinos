@@ -38,17 +38,17 @@
 	
 	
 	$.fn.clearForm = function() {
-	Â  return this.each(function() {
-	Â  Â  var type = this.type, tag = this.tagName.toLowerCase();
-	Â  Â  if (tag == 'form')
-	Â  Â  Â  return $(':input',this).clearForm();
-	Â  Â  if (type == 'text' || type == 'password' || tag == 'textarea')
-	Â  Â  Â  this.value = '';
-	Â  Â  else if (type == 'checkbox' || type == 'radio')
-	Â  Â  Â  this.checked = false;
-	Â  Â  else if (tag == 'select')
-	Â  Â  Â  this.selectedIndex = -1;
-	Â  });
+	� return this.each(function() {
+	� var type = this.type, tag = this.tagName.toLowerCase();
+	� if (tag == 'form')
+	� return $(':input',this).clearForm();
+	� if (type == 'text' || type == 'password' || tag == 'textarea')
+	� this.value = '';
+	� else if (type == 'checkbox' || type == 'radio')
+	� this.checked = false;
+	� else if (tag == 'select')
+	� this.selectedIndex = -1;
+	� });
 	};
 
 })(jQuery);

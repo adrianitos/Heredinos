@@ -281,9 +281,21 @@
 									SELECT SUM(saldo) as total FROM cartera,cartera_persona,persona WHERE persona.nomUser='<%= p.getNomUser() %>' AND persona.id=cartera_persona.id_persona AND cartera.id=cartera_persona.id_cartera;
 								</sql:query>
 								<sql:query dataSource="${snapshot}" var="result2">
-									SELECT * FROM cartera,cartera_persona,persona WHERE persona.nomUser='<%= p.getNomUser() %>' AND persona.id=cartera_persona.id_persona AND cartera.id=cartera_persona.id_cartera;
+									SELECT cartera.* FROM cartera,cartera_persona,persona WHERE persona.nomUser='<%= p.getNomUser() %>' AND persona.id=cartera_persona.id_persona AND cartera.id=cartera_persona.id_cartera;
 								</sql:query>
+
                                 <h1>TOTAL:  <span><c:out value="${result.rows[0].total}"/><i>  Heredines</i></span></h1>
+                                    <form action="result.jsp" id="defaultForm" method="POST" class="form-horizontal">
+                       					 <div class="form-group">
+                       					 <h2>Mostrar datos cartera:</h2>
+                                    		<select id="pene2" name="pene">
+												<c:forEach var="row2" items="${result2.rows}">
+													<option value="${row2.id}">${row2.id}</option>
+												</c:forEach>
+											</select>
+											<button type="submit" class="btn btn-lg btn-success" ><b>Go!</b></button>
+                        				</div>
+                    				</form>
                                     <h2><span><i class="icon-cog-1"></i>CARTERAS</span></h2>
                                 <c:forEach var="row" items="${result2.rows}">
                                 	
